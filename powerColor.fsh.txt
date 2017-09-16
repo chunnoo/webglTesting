@@ -1,0 +1,12 @@
+precision mediump float;
+
+varying vec4 fColor;
+varying vec2 fTexCoord;
+
+uniform sampler2D fSampler;
+void main(void) {
+  vec4 texColor = texture2D(fSampler, fTexCoord);
+  float texShade = (texColor.r + texColor.g + texColor.b)/3.0;
+  float power = 2.0;
+  gl_FragColor = vec4(pow(texColor.r, power), pow(texColor.g, power), pow(texColor.b, power), 1.0);
+}
